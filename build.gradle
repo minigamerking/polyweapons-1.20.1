@@ -12,6 +12,10 @@ base {
 
 repositories {
 	maven { url 'https://maven.nucleoid.xyz' }
+	maven {
+		name = "Terraformers"
+		url = "https://maven.terraformersmc.com/"
+	}
 }
 
 fabricApi {
@@ -26,7 +30,12 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	// Polymer Dependency
 	modImplementation include("eu.pb4:polymer-core:${project.polymer_version}")
+
+	// Optional Mods
+	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
 }
 
 processResources {
