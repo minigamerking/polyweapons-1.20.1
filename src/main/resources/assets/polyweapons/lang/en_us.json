@@ -1,5 +1,10 @@
 {
+  "item.polyweapons.wooden_spear": "Wooden Spear",
   "item.polyweapons.stone_spear": "Stone Spear",
+  "item.polyweapons.iron_spear": "Iron Spear",
+  "item.polyweapons.golden_spear": "Golden Spear",
+  "item.polyweapons.diamond_spear": "Diamond Spear",
+  "item.polyweapons.netherite_spear": "Netherite Spear",
 
 
   "item.polyweapons.group_title": "PolyWeapons"

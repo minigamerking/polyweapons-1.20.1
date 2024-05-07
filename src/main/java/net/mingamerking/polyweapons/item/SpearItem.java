@@ -2,6 +2,7 @@ package net.mingamerking.polyweapons.item;
 
 import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import eu.pb4.polymer.core.api.item.PolymerItem;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
@@ -19,15 +20,33 @@ import java.awt.*;
 public class SpearItem extends Item implements PolymerItem {
 
     private static LivingEntity liver = null;
+    private final Item item_type;
+    private final int damage;
     boolean active = false;
 
-    public SpearItem(Item.Settings settings) {
-        super(settings);
+    public SpearItem(Item.Settings settings, int damage, Item type) {
+
+        super(settings
+                .maxDamage(type.getMaxDamage())
+                .maxDamageIfAbsent(type.getMaxDamage()));
+        System.out.println(this.getMaxDamage());
+        this.item_type = type;
+        this.damage = damage;
+    }
+
+    @Override
+    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
+        float targetHealth = target.getHealth();
+        int itemDamage = attacker.getStackInHand(Hand.MAIN_HAND).getDamage();
+        target.setHealth(targetHealth -= (damage - 1));
+        attacker.getStackInHand(Hand.MAIN_HAND).setDamage(itemDamage -= 1);
+        System.out.println("Damaged Target and Item, Item Damage: " + attacker.getStackInHand(Hand.MAIN_HAND).getDamage());
+        return true;
     }
 
     @Override
     public Item getPolymerItem(ItemStack itemStack, @Nullable ServerPlayerEntity player) {
-        return Items.STONE_SWORD;
+        return item_type;
     }
 
     @Override
@@ -43,11 +62,13 @@ public class SpearItem extends Item implements PolymerItem {
     {
         if (change_range)
         {
+            System.out.println("On");
             liver.getAttributeInstance(ReachEntityAttributes.REACH).setBaseValue(2.0);
-            liver.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE).setBaseValue(0.0);
+            liver.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE).setBaseValue(2.0);
         }
         else
         {
+            System.out.println("Off");
             liver.getAttributeInstance(ReachEntityAttributes.REACH).setBaseValue(0.0);
             liver.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE).setBaseValue(0.0);
         }

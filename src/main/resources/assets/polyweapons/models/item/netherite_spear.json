@@ -1,6 +1,6 @@
 {
   "parent": "item/handheld",
   "textures": {
-    "layer0": "polyweapons:item/stone_spear"
+    "layer0": "polyweapons:item/netherite_spear"
   }
 }
