@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "polyweapons",
 	"version": "${version}",
-	"name": "Poly Weapons",
+	"name": "PolyWeapons",
 	"description": "This is a server-side mod that adds a bunch of cool weapons!",
 	"authors": [
 		"MinGamerKing"

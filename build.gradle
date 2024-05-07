@@ -16,6 +16,19 @@ repositories {
 		name = "Terraformers"
 		url = "https://maven.terraformersmc.com/"
 	}
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+		content {
+			includeGroup "maven.modrinth"
+		}
+	}
+	maven {
+		url "https://maven.jamieswhiteshirt.com/libs-release"
+		content {
+			includeGroup "com.jamieswhiteshirt"
+		}
+	}
 }
 
 fabricApi {
@@ -31,11 +44,14 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-	// Polymer Dependency
+	// Dependencies
 	modImplementation include("eu.pb4:polymer-core:${project.polymer_version}")
+	modImplementation include("eu.pb4:polymer-resource-pack:${project.polymer_version}")
+	include modImplementation("com.jamieswhiteshirt:reach-entity-attributes:${project.reach_version}")
 
 	// Optional Mods
 	modImplementation("com.terraformersmc:modmenu:${project.modmenu_version}")
+	modCompileOnly "maven.modrinth:polydex:1.0.0-beta.2.2+1.20.1"
 }
 
 processResources {
