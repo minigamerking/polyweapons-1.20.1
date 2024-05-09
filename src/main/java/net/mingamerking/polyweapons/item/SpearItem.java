@@ -11,6 +11,8 @@ import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.math.random.RandomSplitter;
 import net.minecraft.world.World;
 import net.mingamerking.polyweapons.polymer.PolymerTextures;
 import org.jetbrains.annotations.Nullable;
@@ -18,6 +20,10 @@ import org.jetbrains.annotations.Nullable;
 import java.awt.*;
 
 public class SpearItem extends Item implements PolymerItem {
+
+    public void print(int text) {
+        System.out.println(text);
+    }
 
     private static LivingEntity liver = null;
     private final Item item_type;
@@ -39,8 +45,8 @@ public class SpearItem extends Item implements PolymerItem {
         float targetHealth = target.getHealth();
         int itemDamage = attacker.getStackInHand(Hand.MAIN_HAND).getDamage();
         target.setHealth(targetHealth -= (damage - 1));
-        attacker.getStackInHand(Hand.MAIN_HAND).setDamage(itemDamage -= 1);
-        System.out.println("Damaged Target and Item, Item Damage: " + attacker.getStackInHand(Hand.MAIN_HAND).getDamage());
+        attacker.getStackInHand(Hand.MAIN_HAND).setDamage(itemDamage += 1);
+        print(attacker.getStackInHand(Hand.MAIN_HAND).getDamage());
         return true;
     }
 
@@ -62,13 +68,11 @@ public class SpearItem extends Item implements PolymerItem {
     {
         if (change_range)
         {
-            System.out.println("On");
             liver.getAttributeInstance(ReachEntityAttributes.REACH).setBaseValue(2.0);
             liver.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE).setBaseValue(2.0);
         }
         else
         {
-            System.out.println("Off");
             liver.getAttributeInstance(ReachEntityAttributes.REACH).setBaseValue(0.0);
             liver.getAttributeInstance(ReachEntityAttributes.ATTACK_RANGE).setBaseValue(0.0);
         }
