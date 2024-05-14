@@ -19,7 +19,7 @@ public class LifeStealSword extends SwordItem implements PolymerItem {
     private final Item item_type;
 
     public LifeStealSword(Item.Settings settings, Item type) {
-        super(ToolMaterials.DIAMOND, 6, -2.4F, settings);
+        super(ToolMaterials.DIAMOND, 3, -2.4F, settings);
         this.item_type = type;
     }
     @Override
@@ -30,16 +30,5 @@ public class LifeStealSword extends SwordItem implements PolymerItem {
     @Override
     public void appendTooltip(ItemStack itemStack, World world, List<Text> tooltip, TooltipContext tooltipContext) {
         tooltip.add(Text.translatable("item.polyweapons.lifesteal_sword.tooltip"));
-    }
-
-    @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        if (attacker instanceof PlayerEntity) {
-            float previousHealth = target.getHealth();
-            float damageDealt = previousHealth - target.getHealth();
-            float healAmount = damageDealt / 4.0F;
-            ((PlayerEntity) attacker).heal(healAmount);
-        }
-        return super.postHit(stack, target, attacker);
     }
 }

@@ -1,6 +1,5 @@
 package net.mingamerking.polyweapons.item;
 
-import com.jamieswhiteshirt.reachentityattributes.ReachEntityAttributes;
 import eu.pb4.polymer.core.api.item.PolymerItemGroupUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;

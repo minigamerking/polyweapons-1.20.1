@@ -1,14 +1,15 @@
 package net.mingamerking.polyweapons;
-
-import eu.pb4.polymer.core.impl.PolymerMod;
-import eu.pb4.polymer.resourcepack.api.PolymerModelData;
-import eu.pb4.polymer.resourcepack.api.PolymerResourcePackUtils;
-import eu.pb4.polymer.resourcepack.api.ResourcePackBuilder;
-import eu.pb4.polymer.resourcepack.impl.PolymerResourcePackMod;
 import net.fabricmc.api.ModInitializer;
 
-import net.minecraft.item.Items;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityCombatEvents;
+import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.text.Text;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
+import net.mingamerking.polyweapons.item.LifeStealSword;
 import net.mingamerking.polyweapons.item.WeaponItems;
 import net.mingamerking.polyweapons.polymer.PolymerTextures;
 import org.slf4j.Logger;
