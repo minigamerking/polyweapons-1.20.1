@@ -28,6 +28,7 @@ public class WeaponItems {
     public static final Item GOLD_SPEAR = registerItem("golden_spear", new SpearItem(new Item.Settings(), 4, Items.GOLDEN_SWORD));
     public static final Item DIAMOND_SPEAR = registerItem("diamond_spear", new SpearItem(new Item.Settings(), 7, Items.DIAMOND_SWORD));
     public static final Item NETHERITE_SPEAR = registerItem("netherite_spear", new SpearItem(new Item.Settings(), 8, Items.NETHERITE_SWORD));
+    public static final Item LIFESTEAL_SWORD = registerItem("lifesteal_sword", new LifeStealSword(new Item.Settings(), Items.DIAMOND_SWORD));
     public static final ItemGroup ITEM_GROUP = ItemGroup.create(null, -1)
             .displayName(Text.translatable("item.polyweapons.group_title"))
             .icon(IRON_SPEAR::getDefaultStack)

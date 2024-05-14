@@ -21,10 +21,6 @@ import java.awt.*;
 
 public class SpearItem extends Item implements PolymerItem {
 
-    public void print(int text) {
-        System.out.println(text);
-    }
-
     private static LivingEntity liver = null;
     private final Item item_type;
     private final int damage;
@@ -35,18 +31,15 @@ public class SpearItem extends Item implements PolymerItem {
         super(settings
                 .maxDamage(type.getMaxDamage())
                 .maxDamageIfAbsent(type.getMaxDamage()));
-        System.out.println(this.getMaxDamage());
         this.item_type = type;
         this.damage = damage;
     }
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        float targetHealth = target.getHealth();
         int itemDamage = attacker.getStackInHand(Hand.MAIN_HAND).getDamage();
-        target.setHealth(targetHealth -= (damage - 1));
+        target.damage(target.getRecentDamageSource(), (damage - 1));
         attacker.getStackInHand(Hand.MAIN_HAND).setDamage(itemDamage += 1);
-        print(attacker.getStackInHand(Hand.MAIN_HAND).getDamage());
         return true;
     }
 

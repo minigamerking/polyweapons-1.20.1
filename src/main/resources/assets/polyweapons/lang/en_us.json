@@ -6,6 +6,9 @@
   "item.polyweapons.diamond_spear": "Diamond Spear",
   "item.polyweapons.netherite_spear": "Netherite Spear",
 
+  "item.polyweapons.lifesteal_sword": "Lifesteal Sword",
+  "item.polyweapons.lifesteal_sword.tooltip": "This sword will steal a quarter of the damage done",
 
-  "item.polyweapons.group_title": "PolyWeapons"
+
+  "item.polyweapons.group_title": "PolyWeapons",
 }
