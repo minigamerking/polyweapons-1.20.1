@@ -5,9 +5,7 @@ import eu.pb4.polymer.core.api.item.PolymerItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.item.*;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
@@ -19,28 +17,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
 
-public class SpearItem extends Item implements PolymerItem {
+public class SpearItem extends SwordItem implements PolymerItem {
 
     private static LivingEntity liver = null;
     private final Item item_type;
     private final int damage;
     boolean active = false;
 
-    public SpearItem(Item.Settings settings, int damage, Item type) {
+    public SpearItem(Item.Settings settings, int damage, ToolMaterial material, Item type) {
 
-        super(settings
-                .maxDamage(type.getMaxDamage())
-                .maxDamageIfAbsent(type.getMaxDamage()));
+        super(material, damage, -2.4f, settings);
         this.item_type = type;
         this.damage = damage;
-    }
-
-    @Override
-    public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        int itemDamage = attacker.getStackInHand(Hand.MAIN_HAND).getDamage();
-        target.damage(target.getRecentDamageSource(), (damage - 1));
-        attacker.getStackInHand(Hand.MAIN_HAND).setDamage(itemDamage += 1);
-        return true;
     }
 
     @Override

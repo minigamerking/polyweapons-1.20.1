@@ -4,6 +4,7 @@ import eu.pb4.polymer.core.api.item.PolymerItemGroupUtils;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.item.ToolMaterials;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
@@ -21,12 +22,12 @@ public class WeaponItems {
 
     public static final TextColor BLACK = getTextColor("#ffffff");
     public static final List<Item> items = new ArrayList<>() {};
-    public static final Item WOOD_SPEAR = registerItem("wooden_spear", new SpearItem(new Item.Settings(), 4, Items.WOODEN_SWORD));
-    public static final Item STONE_SPEAR = registerItem("stone_spear", new SpearItem(new Item.Settings(), 5, Items.STONE_SWORD));
-    public static final Item IRON_SPEAR = registerItem("iron_spear", new SpearItem(new Item.Settings(), 6, Items.IRON_SWORD));
-    public static final Item GOLD_SPEAR = registerItem("golden_spear", new SpearItem(new Item.Settings(), 4, Items.GOLDEN_SWORD));
-    public static final Item DIAMOND_SPEAR = registerItem("diamond_spear", new SpearItem(new Item.Settings(), 7, Items.DIAMOND_SWORD));
-    public static final Item NETHERITE_SPEAR = registerItem("netherite_spear", new SpearItem(new Item.Settings(), 8, Items.NETHERITE_SWORD));
+    public static final Item WOOD_SPEAR = registerItem("wooden_spear", new SpearItem(new Item.Settings(), 0, ToolMaterials.WOOD, Items.WOODEN_SWORD));
+    public static final Item STONE_SPEAR = registerItem("stone_spear", new SpearItem(new Item.Settings(), 1, ToolMaterials.STONE, Items.STONE_SWORD));
+    public static final Item IRON_SPEAR = registerItem("iron_spear", new SpearItem(new Item.Settings(), 2, ToolMaterials.IRON, Items.IRON_SWORD));
+    public static final Item GOLD_SPEAR = registerItem("golden_spear", new SpearItem(new Item.Settings(), 0, ToolMaterials.GOLD, Items.GOLDEN_SWORD));
+    public static final Item DIAMOND_SPEAR = registerItem("diamond_spear", new SpearItem(new Item.Settings(), 3, ToolMaterials.DIAMOND, Items.DIAMOND_SWORD));
+    public static final Item NETHERITE_SPEAR = registerItem("netherite_spear", new SpearItem(new Item.Settings(), 4, ToolMaterials.NETHERITE, Items.NETHERITE_SWORD));
     public static final Item LIFESTEAL_SWORD = registerItem("lifesteal_sword", new LifeStealSword(new Item.Settings(), Items.DIAMOND_SWORD));
     public static final ItemGroup ITEM_GROUP = ItemGroup.create(null, -1)
             .displayName(Text.translatable("item.polyweapons.group_title"))
